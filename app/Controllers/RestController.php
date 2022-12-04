@@ -23,6 +23,14 @@ class RestController extends Controller {
             if ($method=='get') {
                 $data = $this->getId($id);
                 $msg = "Encontrado";
+            } else if ($method=='put') {
+                try {
+                    $data = $this->put($id,$request->getJSON());
+                } catch (RestException $ex) {
+                    $this->response409($ex->getErrores()[0]);
+                    return;
+                }
+                $msg = "Modificado";
             } else if ($method=='delete') {
                 try {
                     $data = $this->delete($id);
@@ -84,6 +92,10 @@ class RestController extends Controller {
 
     protected function post($input) {
         echo json_encode("POST no implementado");
+    }
+
+    protected function put($id,$input) {
+        echo json_encode("PUT no implementado");
     }
 
     protected function escapeIsset($input) {
