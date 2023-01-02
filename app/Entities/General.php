@@ -12,6 +12,29 @@ class General extends Entity {
         "activa_naveg" => null
     ];
 
+    public function getInactivo() {
+        if ($this->attributes['inactivo'] == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public function getActivaSubcat() {
+        if ($this->attributes['activa_subcat'] == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public function getActivaNaveg() {
+        if ($this->attributes['activa_naveg'] == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
 
 ?>
